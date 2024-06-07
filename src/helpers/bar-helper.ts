@@ -82,7 +82,7 @@ const convertToBarTask = (
   milestoneBackgroundColor: string,
   milestoneBackgroundSelectedColor: string
 ): BarTask => {
-  let barTask: BarTask;
+  let barTask: BarTask;  
   switch (task.type) {
     case "milestone":
       barTask = convertToMilestone(
@@ -247,8 +247,10 @@ const convertToMilestone = (
 };
 
 const taskXCoordinate = (xDate: Date, dates: Date[], columnWidth: number) => {
-  const index = dates.findIndex(d => d.getTime() >= xDate.getTime()) - 1;
 
+  const indexx = dates.findIndex(d => d.getTime() >= xDate.getTime()) - 1;
+  const index = (indexx>=0)?indexx:0;
+  
   const remainderMillis = xDate.getTime() - dates[index].getTime();
   const percentOfInterval =
     remainderMillis / (dates[index + 1].getTime() - dates[index].getTime());

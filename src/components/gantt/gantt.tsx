@@ -108,24 +108,29 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   // task change events
   useEffect(() => {
     let filteredTasks: Task[];
+
     if (onExpanderClick) {
       filteredTasks = removeHiddenTasks(tasks);
     } else {
       filteredTasks = tasks;
     }
+
     filteredTasks = filteredTasks.sort(sortTasks);
     const [startDate, endDate] = ganttDateRange(
       filteredTasks,
       viewMode,
       preStepsCount
     );
+
     let newDates = seedDates(startDate, endDate, viewMode);
+
     if (rtl) {
       newDates = newDates.reverse();
       if (scrollX === -1) {
         setScrollX(newDates.length * columnWidth);
       }
     }
+
     setDateSetup({ dates: newDates, viewMode });
     setBarTasks(
       convertToBarTasks(
