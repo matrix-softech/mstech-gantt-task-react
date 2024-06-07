@@ -4,9 +4,11 @@ import styles from "./task-list-header.module.css";
 export const TaskListHeaderDefault: React.FC<{
   headerHeight: number;
   rowWidth: string;
+  taskWidth:number;
   fontFamily: string;
   fontSize: string;
-}> = ({ headerHeight, fontFamily, fontSize, rowWidth }) => {
+  isShown: any;
+}> = ({ headerHeight, fontFamily, fontSize, rowWidth, taskWidth, isShown }) => {
   return (
     <div
       className={styles.ganttTable}
@@ -24,10 +26,11 @@ export const TaskListHeaderDefault: React.FC<{
         <div
           className={styles.ganttTable_HeaderItem}
           style={{
-            minWidth: rowWidth,
+            minWidth: taskWidth,
+            textAlign:'center'
           }}
         >
-          &nbsp;Name
+          Task
         </div>
         <div
           className={styles.ganttTable_HeaderSeparator}
@@ -40,9 +43,10 @@ export const TaskListHeaderDefault: React.FC<{
           className={styles.ganttTable_HeaderItem}
           style={{
             minWidth: rowWidth,
+            textAlign:'center'
           }}
         >
-          &nbsp;From
+          From
         </div>
         <div
           className={styles.ganttTable_HeaderSeparator}
@@ -55,10 +59,61 @@ export const TaskListHeaderDefault: React.FC<{
           className={styles.ganttTable_HeaderItem}
           style={{
             minWidth: rowWidth,
+            textAlign:'center'
           }}
         >
-          &nbsp;To
+          To
         </div>
+        <div
+          className={styles.ganttTable_HeaderSeparator}
+          style={{
+            height: headerHeight * 0.5,
+            marginTop: headerHeight * 0.2,
+          }}
+        />
+        {isShown?.duration&&<div
+          className={styles.ganttTable_HeaderItem}
+          style={{
+            minWidth: rowWidth,
+            textAlign:'center'
+          }}
+        >
+          Duration
+        </div>}
+        <div
+          className={styles.ganttTable_HeaderSeparator}
+          style={{
+            height: headerHeight * 0.5,
+            marginTop: headerHeight * 0.2,
+          }}
+        />     
+        {isShown?.progress&&<div
+          className={styles.ganttTable_HeaderItem}
+          style={{
+            minWidth: rowWidth,
+            textAlign:'center'
+          }}
+        >
+          Progress
+        </div>}
+        {isShown?.estimatedCost&&<div
+          className={styles.ganttTable_HeaderItem}
+          style={{
+            minWidth: rowWidth,
+            textAlign:'center'
+          }}
+        >
+          Estimated Cost
+        </div>}
+        {isShown?.actualCost&&<div
+          className={styles.ganttTable_HeaderItem}
+          style={{
+            minWidth: rowWidth,
+            textAlign:'center'
+          }}
+        >
+          Actual Cost
+        </div>}
       </div>
     </div>
   );
