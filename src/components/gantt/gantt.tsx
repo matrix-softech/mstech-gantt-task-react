@@ -28,6 +28,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   tasks,
   headerHeight = 50,
   columnWidth = 60,
+  taskWidth = 150,
   listCellWidth = "155px",
   rowHeight = 50,
   ganttHeight = 0,
@@ -58,6 +59,12 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   TooltipContent = StandardTooltipContent,
   TaskListHeader = TaskListHeaderDefault,
   TaskListTable = TaskListTableDefault,
+  rightSideElement = [],
+  dateTimeStartComponent = [],
+  dateTimeEndComponent = [],
+  isShown= {},
+  fetchData = () => { return; },
+  onClickTask = () => { return; },
   onDateChange,
   onProgressChange,
   onDoubleClick,
@@ -149,6 +156,13 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     rowHeight,
     barCornerRadius,
     columnWidth,
+    rightSideElement,
+    dateTimeStartComponent,
+    dateTimeEndComponent,
+    isShown,
+    fetchData,
+    onClickTask,
+    taskWidth,
     taskHeight,
     handleWidth,
     barProgressColor,
@@ -434,6 +448,13 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   const tableProps: TaskListProps = {
     rowHeight,
     rowWidth: listCellWidth,
+    taskWidth,
+    rightSideElement,
+    dateTimeStartComponent,
+    dateTimeEndComponent,
+    isShown,
+    fetchData,
+    onClickTask,
     fontFamily,
     fontSize,
     tasks: barTasks,
@@ -449,6 +470,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     TaskListHeader,
     TaskListTable,
   };
+
   return (
     <div>
       <div
