@@ -1468,7 +1468,6 @@ var taskXCoordinate = function taskXCoordinate(xDate, dates, columnWidth) {
     return d.getTime() >= xDate.getTime();
   }) - 1;
   var index = indexx >= 0 ? indexx : 0;
-  console.log(index, "new_dates_ok_xxy");
   var remainderMillis = xDate.getTime() - dates[index].getTime();
   var percentOfInterval = remainderMillis / (dates[index + 1].getTime() - dates[index].getTime());
   var x = index * columnWidth + percentOfInterval * columnWidth;
