@@ -1,0 +1,20 @@
+import React from "react";
+import { Task } from "../../types/public-types";
+export declare const TaskListTableDefault: React.FC<{
+    rowHeight: number;
+    rowWidth: string;
+    taskWidth: number;
+    rightSideElement: any;
+    isShown: any;
+    dateTimeStartComponent: any;
+    dateTimeEndComponent: any;
+    fetchData: () => void;
+    onClickTask: (task_id: string) => void;
+    fontFamily: string;
+    fontSize: string;
+    locale: string;
+    tasks: Task[];
+    selectedTaskId: string;
+    setSelectedTask: (taskId: string) => void;
+    onExpanderClick: (task: Task) => void;
+}>;
