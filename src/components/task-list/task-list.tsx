@@ -5,6 +5,13 @@ import { Task } from "../../types/public-types";
 export type TaskListProps = {
   headerHeight: number;
   rowWidth: string;
+  taskWidth: number;
+  rightSideElement:any;
+  dateTimeStartComponent:any;
+  dateTimeEndComponent:any;
+  isShown:any;
+  fetchData: () => void;
+  onClickTask: (task_id: string) => void;
   fontFamily: string;
   fontSize: string;
   rowHeight: number;
@@ -20,17 +27,26 @@ export type TaskListProps = {
   TaskListHeader: React.FC<{
     headerHeight: number;
     rowWidth: string;
+    taskWidth: number;
     fontFamily: string;
     fontSize: string;
+    isShown: any;
   }>;
   TaskListTable: React.FC<{
     rowHeight: number;
     rowWidth: string;
+    taskWidth: number;
     fontFamily: string;
     fontSize: string;
     locale: string;
     tasks: Task[];
     selectedTaskId: string;
+    rightSideElement: any;
+    dateTimeStartComponent: any;
+    dateTimeEndComponent: any;
+    isShown:any;
+    fetchData: () => void;
+    onClickTask: (task_id: string) => void,
     setSelectedTask: (taskId: string) => void;
     onExpanderClick: (task: Task) => void;
   }>;
@@ -41,6 +57,13 @@ export const TaskList: React.FC<TaskListProps> = ({
   fontFamily,
   fontSize,
   rowWidth,
+  taskWidth,
+  rightSideElement,
+  dateTimeStartComponent,
+  dateTimeEndComponent,
+  isShown,
+  fetchData,
+  onClickTask,
   rowHeight,
   scrollY,
   tasks,
@@ -66,11 +89,20 @@ export const TaskList: React.FC<TaskListProps> = ({
     fontFamily,
     fontSize,
     rowWidth,
+    taskWidth,
+    isShown,
   };
   const selectedTaskId = selectedTask ? selectedTask.id : "";
   const tableProps = {
     rowHeight,
     rowWidth,
+    taskWidth,
+    rightSideElement,
+    dateTimeStartComponent,
+    dateTimeEndComponent,
+    isShown,
+    fetchData,
+    onClickTask,
     fontFamily,
     fontSize,
     tasks,
