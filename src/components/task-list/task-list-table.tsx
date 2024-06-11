@@ -43,6 +43,7 @@ export const TaskListTableDefault: React.FC<{
   rowWidth: string;
   taskWidth: number;
   rightSideElement:any;
+  progressBarElement: any;
   isShown: any;
   dateTimeStartComponent:any;
   dateTimeEndComponent:any;
@@ -60,6 +61,7 @@ export const TaskListTableDefault: React.FC<{
   rowWidth,
   taskWidth,
   rightSideElement,
+  progressBarElement,
   dateTimeStartComponent,
   dateTimeEndComponent,
   isShown,
@@ -107,6 +109,11 @@ export const TaskListTableDefault: React.FC<{
 
   const updateEndDatePicker = (taskId:string) => {
     const updatedElement = React.cloneElement(dateTimeEndComponent, {'taskId':taskId})
+    return updatedElement;
+  };
+
+  const updateProgressBarElement = (taskId:string) => {
+    const updatedElement = React.cloneElement(progressBarElement, {'taskId':taskId})
     return updatedElement;
   };
 
@@ -216,11 +223,7 @@ export const TaskListTableDefault: React.FC<{
                 textAlign:"center"
               }}
             >
-              {!expanderSymbol && <div style={{position:'relative', width: '80%',height:'18px', fontSize:'10px',border:'1px solid #228b22'}}>
-                  <div style={{height:'100%', backgroundColor:'#228b22', width:`${(t.progress>0)?t.progress:'0'}%`}}>&nbsp;</div>
-                  {t.progress < 60 &&<div style={{position:'absolute', top:'0px', left:'0px', width:'100%', color:'#000000',textAlign:'right', paddingRight:3, paddingLeft:3}}>{(t.progress>0)?t.progress:'0'}%</div>}
-                  {t.progress >= 60 &&<div style={{position:'absolute', top:'0px', left:'0px', width:'100%', color:'#ffffff',textAlign:'left', paddingRight:3, paddingLeft:3}}>{(t.progress>0)?t.progress:'0'}%</div>}
-              </div>}
+              {!expanderSymbol && updateProgressBarElement(t.id)}
             </div>}
             {isShown?.estimatedCost&&<div
               className={styles.taskListCell}

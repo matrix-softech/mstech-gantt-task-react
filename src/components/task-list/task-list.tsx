@@ -7,6 +7,7 @@ export type TaskListProps = {
   rowWidth: string;
   taskWidth: number;
   rightSideElement:any;
+  progressBarElement: any;
   dateTimeStartComponent:any;
   dateTimeEndComponent:any;
   isShown:any;
@@ -42,6 +43,7 @@ export type TaskListProps = {
     tasks: Task[];
     selectedTaskId: string;
     rightSideElement: any;
+    progressBarElement: any;
     dateTimeStartComponent: any;
     dateTimeEndComponent: any;
     isShown:any;
@@ -59,6 +61,7 @@ export const TaskList: React.FC<TaskListProps> = ({
   rowWidth,
   taskWidth,
   rightSideElement,
+  progressBarElement,
   dateTimeStartComponent,
   dateTimeEndComponent,
   isShown,
@@ -98,6 +101,7 @@ export const TaskList: React.FC<TaskListProps> = ({
     rowWidth,
     taskWidth,
     rightSideElement,
+    progressBarElement,
     dateTimeStartComponent,
     dateTimeEndComponent,
     isShown,

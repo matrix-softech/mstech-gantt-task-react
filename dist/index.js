@@ -377,6 +377,7 @@ var TaskListTableDefault = function TaskListTableDefault(_ref) {
       rowWidth = _ref.rowWidth,
       taskWidth = _ref.taskWidth,
       rightSideElement = _ref.rightSideElement,
+      progressBarElement = _ref.progressBarElement,
       dateTimeStartComponent = _ref.dateTimeStartComponent,
       dateTimeEndComponent = _ref.dateTimeEndComponent,
       isShown = _ref.isShown,
@@ -426,6 +427,13 @@ var TaskListTableDefault = function TaskListTableDefault(_ref) {
 
   var updateEndDatePicker = function updateEndDatePicker(taskId) {
     var updatedElement = React__default.cloneElement(dateTimeEndComponent, {
+      'taskId': taskId
+    });
+    return updatedElement;
+  };
+
+  var updateProgressBarElement = function updateProgressBarElement(taskId) {
+    var updatedElement = React__default.cloneElement(progressBarElement, {
       'taskId': taskId
     });
     return updatedElement;
@@ -526,43 +534,7 @@ var TaskListTableDefault = function TaskListTableDefault(_ref) {
         maxWidth: rowWidth,
         textAlign: "center"
       }
-    }, !expanderSymbol && React__default.createElement("div", {
-      style: {
-        position: 'relative',
-        width: '80%',
-        height: '18px',
-        fontSize: '10px',
-        border: '1px solid #228b22'
-      }
-    }, React__default.createElement("div", {
-      style: {
-        height: '100%',
-        backgroundColor: '#228b22',
-        width: (t.progress > 0 ? t.progress : '0') + "%"
-      }
-    }, "\xA0"), t.progress < 60 && React__default.createElement("div", {
-      style: {
-        position: 'absolute',
-        top: '0px',
-        left: '0px',
-        width: '100%',
-        color: '#000000',
-        textAlign: 'right',
-        paddingRight: 3,
-        paddingLeft: 3
-      }
-    }, t.progress > 0 ? t.progress : '0', "%"), t.progress >= 60 && React__default.createElement("div", {
-      style: {
-        position: 'absolute',
-        top: '0px',
-        left: '0px',
-        width: '100%',
-        color: '#ffffff',
-        textAlign: 'left',
-        paddingRight: 3,
-        paddingLeft: 3
-      }
-    }, t.progress > 0 ? t.progress : '0', "%"))), (isShown === null || isShown === void 0 ? void 0 : isShown.estimatedCost) && React__default.createElement("div", {
+    }, !expanderSymbol && updateProgressBarElement(t.id)), (isShown === null || isShown === void 0 ? void 0 : isShown.estimatedCost) && React__default.createElement("div", {
       className: styles$1.taskListCell,
       style: {
         minWidth: rowWidth,
@@ -727,6 +699,7 @@ var TaskList = function TaskList(_ref) {
       rowWidth = _ref.rowWidth,
       taskWidth = _ref.taskWidth,
       rightSideElement = _ref.rightSideElement,
+      progressBarElement = _ref.progressBarElement,
       dateTimeStartComponent = _ref.dateTimeStartComponent,
       dateTimeEndComponent = _ref.dateTimeEndComponent,
       isShown = _ref.isShown,
@@ -764,6 +737,7 @@ var TaskList = function TaskList(_ref) {
     rowWidth: rowWidth,
     taskWidth: taskWidth,
     rightSideElement: rightSideElement,
+    progressBarElement: progressBarElement,
     dateTimeStartComponent: dateTimeStartComponent,
     dateTimeEndComponent: dateTimeEndComponent,
     isShown: isShown,
@@ -2524,6 +2498,8 @@ var Gantt = function Gantt(_ref) {
       TaskListTable = _ref$TaskListTable === void 0 ? TaskListTableDefault : _ref$TaskListTable,
       _ref$rightSideElement = _ref.rightSideElement,
       rightSideElement = _ref$rightSideElement === void 0 ? [] : _ref$rightSideElement,
+      _ref$progressBarEleme = _ref.progressBarElement,
+      progressBarElement = _ref$progressBarEleme === void 0 ? [] : _ref$progressBarEleme,
       _ref$dateTimeStartCom = _ref.dateTimeStartComponent,
       dateTimeStartComponent = _ref$dateTimeStartCom === void 0 ? [] : _ref$dateTimeStartCom,
       _ref$dateTimeEndCompo = _ref.dateTimeEndComponent,
@@ -2644,7 +2620,7 @@ var Gantt = function Gantt(_ref) {
       viewMode: viewMode
     });
     setBarTasks(convertToBarTasks(filteredTasks, newDates, columnWidth, rowHeight, taskHeight, barCornerRadius, handleWidth, rtl, barProgressColor, barProgressSelectedColor, barBackgroundColor, barBackgroundSelectedColor, projectProgressColor, projectProgressSelectedColor, projectBackgroundColor, projectBackgroundSelectedColor, milestoneBackgroundColor, milestoneBackgroundSelectedColor));
-  }, [tasks, viewMode, preStepsCount, rowHeight, barCornerRadius, columnWidth, rightSideElement, dateTimeStartComponent, dateTimeEndComponent, isShown, fetchData, onClickTask, taskWidth, taskHeight, handleWidth, barProgressColor, barProgressSelectedColor, barBackgroundColor, barBackgroundSelectedColor, projectProgressColor, projectProgressSelectedColor, projectBackgroundColor, projectBackgroundSelectedColor, milestoneBackgroundColor, milestoneBackgroundSelectedColor, rtl, scrollX, onExpanderClick]);
+  }, [tasks, viewMode, preStepsCount, rowHeight, barCornerRadius, columnWidth, rightSideElement, progressBarElement, dateTimeStartComponent, dateTimeEndComponent, isShown, fetchData, onClickTask, taskWidth, taskHeight, handleWidth, barProgressColor, barProgressSelectedColor, barBackgroundColor, barBackgroundSelectedColor, projectProgressColor, projectProgressSelectedColor, projectBackgroundColor, projectBackgroundSelectedColor, milestoneBackgroundColor, milestoneBackgroundSelectedColor, rtl, scrollX, onExpanderClick]);
   React.useEffect(function () {
     if (viewMode === dateSetup.viewMode && (viewDate && !currentViewDate || viewDate && (currentViewDate === null || currentViewDate === void 0 ? void 0 : currentViewDate.valueOf()) !== viewDate.valueOf())) {
       var dates = dateSetup.dates;
@@ -2905,6 +2881,7 @@ var Gantt = function Gantt(_ref) {
     rowWidth: listCellWidth,
     taskWidth: taskWidth,
     rightSideElement: rightSideElement,
+    progressBarElement: progressBarElement,
     dateTimeStartComponent: dateTimeStartComponent,
     dateTimeEndComponent: dateTimeEndComponent,
     isShown: isShown,

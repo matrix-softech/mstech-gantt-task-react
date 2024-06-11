@@ -6,6 +6,7 @@ export declare type TaskListProps = {
     rowWidth: string;
     taskWidth: number;
     rightSideElement: any;
+    progressBarElement: any;
     dateTimeStartComponent: any;
     dateTimeEndComponent: any;
     isShown: any;
@@ -41,6 +42,7 @@ export declare type TaskListProps = {
         tasks: Task[];
         selectedTaskId: string;
         rightSideElement: any;
+        progressBarElement: any;
         dateTimeStartComponent: any;
         dateTimeEndComponent: any;
         isShown: any;

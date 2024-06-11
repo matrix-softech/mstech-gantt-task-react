@@ -5,6 +5,7 @@ export declare const TaskListTableDefault: React.FC<{
     rowWidth: string;
     taskWidth: number;
     rightSideElement: any;
+    progressBarElement: any;
     isShown: any;
     dateTimeStartComponent: any;
     dateTimeEndComponent: any;

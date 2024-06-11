@@ -83,6 +83,7 @@ export interface StylingOption {
     headerHeight?: number;
     columnWidth?: number;
     rightSideElement?: any;
+    progressBarElement?: any;
     dateTimeStartComponent?: any;
     dateTimeEndComponent?: any;
     isShown?: any;
@@ -137,6 +138,7 @@ export interface StylingOption {
         tasks: Task[];
         selectedTaskId: string;
         rightSideElement: any;
+        progressBarElement: any;
         dateTimeStartComponent: any;
         dateTimeEndComponent: any;
         isShown: any;
